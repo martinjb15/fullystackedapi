@@ -21,14 +21,14 @@ namespace fullystackedapi.Controllers
         }
 
         // GET: api/CustomerDetails
-        [HttpGet]
+        [HttpGet("/insurance/customer")]
         public async Task<ActionResult<IEnumerable<CustomerDetail>>> GetCustomerDetails()
         {
             return await _context.CustomerDetails.ToListAsync();
         }
 
         // GET: api/CustomerDetails/5
-        [HttpGet("{id}")]
+        [HttpGet("/insurance/customer/{id}")]
         public async Task<ActionResult<CustomerDetail>> GetCustomerDetail(int id)
         {
             var customerDetail = await _context.CustomerDetails.FindAsync(id);
@@ -44,7 +44,7 @@ namespace fullystackedapi.Controllers
         // PUT: api/CustomerDetails/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
+        [HttpPut("/insurance/customer/{id}")]
         public async Task<IActionResult> PutCustomerDetail(int id, CustomerDetail customerDetail)
         {
             if (id != customerDetail.generatedKeyId)
@@ -76,7 +76,7 @@ namespace fullystackedapi.Controllers
         // POST: api/CustomerDetails
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
+        [HttpPost ("/insurance/customer/")]
         public async Task<ActionResult<CustomerDetail>> PostCustomerDetail(CustomerDetail customerDetail)
         {
             _context.CustomerDetails.Add(customerDetail);
@@ -86,7 +86,7 @@ namespace fullystackedapi.Controllers
         }
 
         // DELETE: api/CustomerDetails/5
-        [HttpDelete("{id}")]
+        [HttpDelete("/insurance/customer/{id}")]
         public async Task<ActionResult<CustomerDetail>> DeleteCustomerDetail(int id)
         {
             var customerDetail = await _context.CustomerDetails.FindAsync(id);
