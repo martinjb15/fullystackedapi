@@ -37,7 +37,8 @@ namespace fullystackedapi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
             });
             services.AddControllers();
-            services.AddCors();
+            //uncomment for angular
+            //services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,10 +67,11 @@ namespace fullystackedapi
             {
                 endpoints.MapControllers();
             });
-            app.UseCors(options =>
-            options.WithOrigins("http://localhost:4200")
-            .AllowAnyMethod()
-            .AllowAnyHeader());
+            // uncomment for angular
+            //app.UseCors(options =>
+            //options.WithOrigins("http://localhost:4200")
+            //.AllowAnyMethod()
+            //.AllowAnyHeader());
         }
     }
 }
