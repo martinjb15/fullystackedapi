@@ -38,7 +38,7 @@ namespace fullystackedapi
             });
             services.AddControllers();
             //uncomment for angular
-            //services.AddCors();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +48,14 @@ namespace fullystackedapi
             {
                 app.UseDeveloperExceptionPage();
             }
+            // uncomment for angular
+            app.UseCors(options =>
+            options
+            //.WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            );
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
@@ -67,11 +75,8 @@ namespace fullystackedapi
             {
                 endpoints.MapControllers();
             });
-            // uncomment for angular
-            //app.UseCors(options =>
-            //options.WithOrigins("http://localhost:4200")
-            //.AllowAnyMethod()
-            //.AllowAnyHeader());
+           
+         
         }
     }
 }
